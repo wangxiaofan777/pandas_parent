@@ -12,6 +12,7 @@
 
   <modules>
     <module>pandas_eureka</module>
+      <module>pandas_gateway</module>
   </modules>
 
   <properties>

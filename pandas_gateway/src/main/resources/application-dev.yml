@@ -1,0 +1,9 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      enabled: true # 是否启用网关
