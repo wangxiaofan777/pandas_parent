@@ -1,3 +1,6 @@
 server:
-  port: 8000
+  port: 9876
 
+spring:
+  profiles:
+    active: dev

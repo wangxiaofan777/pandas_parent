@@ -1,0 +1,16 @@
+server:
+  port: 9876
+
+eureka:
+  server:
+    enable-self-preservation: false # 是否开启自我保护
+  instance:
+    hostname: localhost
+    prefer-ip-address: true # 偏向IP
+    lease-renewal-interval-in-seconds: 30 # 续租时间间隔
+    lease-expiration-duration-in-seconds: 90 # 过期时间
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka # 注册中心服务列表
+    fetch-registry: false # 拉取服务列表
+    register-with-eureka: false # 是否注册到注册中心
