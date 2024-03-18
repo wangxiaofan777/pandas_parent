@@ -14,6 +14,8 @@
         <module>pandas-eureka</module>
         <module>pandas-gateway</module>
         <module>pandas-common</module>
+        <module>pandas-order</module>
+        <module>pandas-user</module>
     </modules>
 
     <properties>
