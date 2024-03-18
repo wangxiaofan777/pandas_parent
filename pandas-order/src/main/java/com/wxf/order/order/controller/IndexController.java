@@ -1,5 +1,6 @@
 package com.wxf.order.order.controller;
 
+import com.wxf.order.order.clients.UserFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,18 @@ public class IndexController {
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private UserFeignClient userFeignClient;
 
     @GetMapping("/users")
     public Integer getUser(){
-        return restTemplate.getForObject("http://user-service:8094/users/", Integer.class);
+        return restTemplate.getForObject("http://user-service/users/", Integer.class);
+    }
+
+
+    @GetMapping("/users/fallback")
+    public Integer getUserFallBack(){
+        return userFeignClient.getPort();
     }
 
 }
