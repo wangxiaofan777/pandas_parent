@@ -1,6 +1,10 @@
 server:
   port: 8094
+  servlet:
+    context-path: /users
 
 spring:
   profiles:
     active: dev
+  application:
+    name: user-service

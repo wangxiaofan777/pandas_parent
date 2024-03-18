@@ -1,12 +1,10 @@
 server:
-  port: 9876
+  port: 8092
+
 
 eureka:
-  server:
-    enable-self-preservation: false # 是否开启自我保护
   instance:
     appname: ${spring.application.name} # 应用服务名称
-    hostname: eureka-server-A
     prefer-ip-address: true # 偏向IP
     ip-address: 192.168.202.9 # 指定IP地址
     lease-renewal-interval-in-seconds: 30 # 续租时间间隔

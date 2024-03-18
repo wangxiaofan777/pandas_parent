@@ -1,6 +1,10 @@
 server:
   port: 8092
+  servlet:
+    context-path: /orders
 
 spring:
   profiles:
     active: dev
+  application:
+    name: order-service
