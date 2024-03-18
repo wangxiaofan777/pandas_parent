@@ -1,6 +1,11 @@
 server:
   port: 8094
 
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true # 默认开启负载均衡
 
 eureka:
   instance:
@@ -14,3 +19,14 @@ eureka:
       defaultZone: http://eureka-server-A:9876/eureka,http://eureka-server-B:9877/eureka # 注册中心服务列表
     fetch-registry: true # 拉取服务列表
     register-with-eureka: true # 是否注册到注册中心
+
+
+# 负载均衡，指定服务的话则为全局
+ORDER-SERVICE:
+  ribbon:
+    ConnectTimeOut: 1000 # 连接超市时间
+    ReadTimeOut: 10000 # 请求处理时间
+    OkToRetyrOnAllOperations: true # 对所有操作都重试
+    MaxAutoRetyiesNextServer: 2 # 切换实例重拾次数
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule # 负载均衡策略
+
