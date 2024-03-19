@@ -1,4 +1,4 @@
-package com.wxf.order.order.clients;
+package com.wxf.order.clients;
 
 /**
  * @author Wxf

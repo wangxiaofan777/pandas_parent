@@ -7,3 +7,31 @@ spring:
   cloud:
     gateway:
       enabled: true # 是否启用网关
+      routes:
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+        - id: order-service-route
+          uri: lb://order-service
+          predicates:
+            - Path=/orders/**
+      discovery:
+        locator:
+          enabled: true # 开启服务发现和路由功能，默认为false
+          lower-case-service-id: true # 默认路由会大写，转成小写
+
+eureka:
+  instance:
+    appname: ${spring.application.name} # 应用服务名称
+    prefer-ip-address: true # 偏向IP
+    ip-address: 192.168.202.9 # 指定IP地址
+    lease-renewal-interval-in-seconds: 30 # 续租时间间隔
+    lease-expiration-duration-in-seconds: 90 # 过期时间
+  client:
+    service-url:
+      defaultZone: http://eureka-server-A:9876/eureka,http://eureka-server-B:9877/eureka # 注册中心服务列表
+    fetch-registry: true # 拉取服务列表
+    register-with-eureka: true # 是否注册到注册中心
+
+

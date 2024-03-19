@@ -1,6 +1,6 @@
-package com.wxf.order.order.controller;
+package com.wxf.order.controller;
 
-import com.wxf.order.order.clients.UserFeignClient;
+import com.wxf.order.clients.UserFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

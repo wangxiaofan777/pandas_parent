@@ -1,4 +1,4 @@
-package com.wxf.order.order;
+package com.wxf.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

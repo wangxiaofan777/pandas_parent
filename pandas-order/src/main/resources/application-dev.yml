@@ -28,3 +28,8 @@ user-service:
     OkToRetyrOnAllOperations: true # 对所有操作都重试
     MaxAutoRetyiesNextServer: 2 # 切换实例重拾次数
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule # 负载均衡策略
+
+# 日志配置
+logging:
+  level:
+    com.wxf.order.clients.UserFeignClient: debug
