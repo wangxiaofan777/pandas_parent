@@ -7,6 +7,9 @@ spring:
   cloud:
     gateway:
       enabled: true # 是否启用网关
+      httpclient:
+        connect-timeout: 1000 # 连接超时时间
+        response-timeout: 5s # 响应超市时间
       routes:
         - id: user-service-route
           uri: lb://user-service
