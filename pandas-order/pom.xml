@@ -63,6 +63,13 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <!--yml文件获取pom变量-->
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
 </project>

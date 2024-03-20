@@ -1,0 +1,22 @@
+server:
+  port: 9401
+spring:
+  profiles:
+    active: dev
+  application:
+    name: pandas-auth
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    database: 0
+    port: 6379
+    host: localhost
+    password:
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
