@@ -6,6 +6,17 @@ spring:
     loadbalancer:
       retry:
         enabled: true # 默认开启负载均衡
+  sleuth:
+    enabled: true # 开启Sleuth
+    sampler:
+      probability: 1 # 采样率，默认是0.1
+      refresh:
+        enabled: true # 是否刷新
+      rate: 10 # 每秒采样频率
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    sender:
+      type: web # zipkin采样存储类型，web默认就是HTTP，其他的MQ异步的方式
 
 eureka:
   instance:
@@ -20,6 +31,15 @@ eureka:
       defaultZone: http://eureka-server-A:9876/eureka,http://eureka-server-B:9877/eureka # 注册中心服务列表
     fetch-registry: true # 拉取服务列表
     register-with-eureka: true # 是否注册到注册中心
+
+feign:
+  autoconfiguration:
+    jackson:
+      enabled: true # 是否开启jackson支持
+  oauth2:
+    enabled: false # 是否开启oauth2认证
+    load-balanced: true # 是否开启负载均衡
+
 
 # 负载均衡，指定服务的话则为全局
 user-service:

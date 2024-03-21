@@ -990,3 +990,80 @@ eureka:
 * 然后创建user-service和order-service两个服务，并开启负载均衡
 * 测试完成后，再通过feign实现调用
 * 将网关服务注册到注册中心，并添加到负载均衡，通过网关进行调用可以看到实现了负载均衡
+
+### 链路监控
+
+#### 1. 配置
+
+* pandas_parent
+
+> pom中添加坐标
+
+```yaml
+
+<properties>
+  <spring-cloud-starter-zipkin.version>2.2.8.RELEASE</spring-cloud-starter-zipkin.version>
+</properties>
+
+<!-- spring-cloud-starter-zipkin -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-zipkin</artifactId>
+    <version>${spring-cloud-starter-zipkin.version}</version>
+</dependency>
+```
+
+* 网关、注册中心、用户服务、订单服务pom中都增加
+
+* 配置文件添加
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-sleuth</artifactId>
+</dependency>
+
+<!-- spring-cloud-starter-zipkin -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-zipkin</artifactId>
+</dependency>
+
+```
+
+```yaml
+spring:
+  sleuth:
+    enabled: true # 开启Sleuth
+    sampler:
+      probability: 1 # 采样率，默认是0.1
+      refresh:
+        enabled: true # 是否刷新
+      rate: 10 # 每秒采样频率
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    sender:
+      type: web # zipkin采样存储类型，web默认就是HTTP，其他的MQ异步的方式
+```
+
+#### 2. 安装zipkin
+
+```shell
+docker run --name zipkin -d -p 9411:9411 openzipkin/zipkin
+```
+
+#### 3. 访问zipkin web页面
+
+```http request
+http://127.0.0.1:9411
+```
+
+#### 4. 启动服务
+
+#### 5. 从网关调用订单服务
+
+```http request
+http://127.0.0.1:8001/orders/users
+```
+
+#### 6. 观察zipkin业务可以看到响应的调用情况

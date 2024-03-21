@@ -26,6 +26,7 @@
         <spring-cloud.version>2021.0.9</spring-cloud.version>
         <spring-boot.version>2.7.18</spring-boot.version>
         <pandas-common.version>1.0-SNAPSHOT</pandas-common.version>
+        <spring-cloud-starter-zipkin.version>2.2.8.RELEASE</spring-cloud-starter-zipkin.version>
 
     </properties>
 
@@ -57,6 +58,14 @@
                 <artifactId>pandas-common</artifactId>
                 <version>${pandas-common.version}</version>
             </dependency>
+
+            <!-- spring-cloud-starter-zipkin -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${spring-cloud-starter-zipkin.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
