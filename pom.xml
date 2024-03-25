@@ -16,7 +16,7 @@
         <module>pandas-common</module>
         <module>pandas-order</module>
         <module>pandas-user</module>
-        <module>pandas-oauth</module>
+        <module>pandas-auth</module>
     </modules>
 
     <properties>

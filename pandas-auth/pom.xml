@@ -8,10 +8,10 @@
     </parent>
 
     <groupId>com.wxf.auth</groupId>
-    <artifactId>pandas-oauth</artifactId>
+    <artifactId>pandas-auth</artifactId>
     <packaging>jar</packaging>
 
-    <name>pandas-oauth</name>
+    <name>pandas-auth</name>
     <description>认证服务</description>
 
 
@@ -37,12 +37,6 @@
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
             <version>8.16</version>
-        </dependency>
-
-        <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <dependency>

@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  pandas-auth:
+    container_name: pandas-auth-1.0
+    image: pandas-auth:1.0
+    build:
+      dockerfile: Dockerfile
+      context: pandas-auth
+  pandas-eureka:
+    container_name: pandas-eureka-1.0
+    image: pandas-eureka:1.0
+    build:
+      context: pandas-eureka
+      dockerfile: Dockerfile

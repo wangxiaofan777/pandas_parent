@@ -1,8 +1,16 @@
 package com.wxf.order.config;
 
 import feign.Logger;
+import feign.RequestInterceptor;
+import feign.codec.ErrorDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.Objects;
 
 /**
  * @author Wxf
@@ -20,5 +28,29 @@ public class FeignConfig {
     @Bean
     public Logger.Level feignLevel() {
         return Logger.Level.FULL;
+    }
+
+
+    // feign转发请求头
+//    @Bean
+    public RequestInterceptor requestInterceptor() {
+        return template -> {
+            ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+
+            if (Objects.nonNull(requestAttributes)) {
+                HttpServletRequest request = requestAttributes.getRequest();
+
+                Enumeration<String> headerNames = request.getHeaderNames();
+
+                while (headerNames.hasMoreElements()) {
+                    String headerName = headerNames.nextElement();
+                    String headerValue = request.getHeader(headerName);
+
+                    template.header(headerName, headerValue);
+                }
+            }
+
+
+        };
     }
 }
