@@ -32,3 +32,20 @@ eureka:
       defaultZone: http://eureka-server-A:9876/eureka,http://eureka-server-B:9877/eureka # 注册中心服务列表
     fetch-registry: true # 拉取服务列表
     register-with-eureka: true # 是否注册到注册中心
+    healthcheck:
+      enabled: true # 默认开启监控检查
+
+# 日志配置
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+
+# 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+

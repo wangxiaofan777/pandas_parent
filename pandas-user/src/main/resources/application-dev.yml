@@ -43,5 +43,11 @@ ORDER-SERVICE:
     MaxAutoRetyiesNextServer: 2 # 切换实例重拾次数
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule # 负载均衡策略
 
+# 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
 
 
