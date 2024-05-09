@@ -1067,3 +1067,20 @@ http://127.0.0.1:8001/orders/users
 ```
 
 #### 6. 观察zipkin业务可以看到响应的调用情况
+
+
+
+#### 3. 安装sentinel
+
+* 安装
+
+```shell
+docker run --name sentinel -p 8858:8858 -td bladex/sentinel-dashboard
+```
+
+* 访问 WEB页面
+> 用户名密码都是sentinel
+
+```http request
+http://127.0.0.1:8858
+```
